@@ -1,14 +1,10 @@
-import http from 'http';
 import express from 'express';
+import routes from './routes';
+
+//express app setup
 const app = express();
-const port = 3000;
 
-const express = express();
+//use routes
+app.use('/', routes);
 
-const server = http.createServer(app);
-server.listen(port);
-server.on('listening', () => {
-  console.log(`Server is listening on port: ${port}.`);
-});
-
-app.get('*', (req, res) => res.send('Hello World!'));
+export default app;

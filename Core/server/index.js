@@ -1,9 +1,7 @@
 //import dependencies
 import http from 'http';
 import express from 'express';
-
-//initialize express
-const app = express();
+import app from '../app';
 
 //logger function
 function log(message) {
