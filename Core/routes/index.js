@@ -1,10 +1,5 @@
-import express from 'express';
-
-const router = express.Router();
-
-//get home page
-router.get('*', (req, res) => {
-  res.json({ message: 'Connected to ktracker backend.' });
-});
-
-export default router;
+module.exports = function(app) {
+  app.use('/auth', require('./auth'));
+  app.use('/report', require('./report'));
+  app.use('/admin', require('./admin'));
+};

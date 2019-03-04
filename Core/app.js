@@ -5,6 +5,6 @@ import routes from './routes';
 const app = express();
 
 //use routes
-app.use('/', routes);
+require('./routes')(app);
 
 export default app;
