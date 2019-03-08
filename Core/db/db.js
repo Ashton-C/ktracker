@@ -10,6 +10,11 @@ module.exports = {
     });
     return db;
   },
+  createUser: function(db, username, password) {
+    let sql = `INSERT INTO users (username, password) VALUES (?, ?)`;
+    db.run(sql, [username, password]);
+    console.log('User Created!');
+  },
   createReport: function(
     db,
     report_type,
@@ -26,9 +31,37 @@ module.exports = {
       report_desc,
       platform,
       submitted_by,
-      date_added,
+      date_added
     ]);
-    console.log('report logged!');
+    console.log('Report Logged!');
+  },
+  loginUser: function(db, username, password) {
+    let checkForUserSQL = `SELECT * FROM users WHERE username = "${username}"`;
+    let loginSuccess = null;
+    let passMatch = null;
+    let userMatch = null;
+    let data = [];
+    db.all(checkForUserSQL, [], (err, rows) => {
+      data.push(rows);
+      return data;
+    });
+    // console.log(data);
+    return data;
+  },
+  queryReports: function(db, report_type) {
+    let qdata = [];
+    db.serialize(() => {
+      let respond = true;
+      let sql = `SELECT * FROM reports WHERE report_type = '${report_type}' ORDER BY date_added`;
+      db.all(sql, [], (err, rows) => {
+        rows.forEach(row => {
+          qdata.push(row);
+        });
+        return qdata;
+      });
+      return qdata;
+    });
+    return qdata;
   },
   terminateDb: function(db) {
     db.close(err => {
@@ -37,5 +70,5 @@ module.exports = {
       }
       console.log('Close the database connection.');
     });
-  },
+  }
 };

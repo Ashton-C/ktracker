@@ -1,5 +1,5 @@
 const AdminRouter = require('express').Router();
 
-AdminRouter.route('/stats').get(require('./stats.js'));
+AdminRouter.route('/data/:route_type').get(require('./data.js'));
 
 module.exports = AdminRouter;

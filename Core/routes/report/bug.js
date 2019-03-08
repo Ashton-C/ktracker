@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 import bodyParser from 'body-parser';
 
-//const dbFunctions = require('E:/GitHub/ktracker/Core/db/db.js');
-const dbFunctions = require('/home/ashton/react-projects/ktracker/Core/db/db.js');
+const dbFunctions = require('E:/GitHub/ktracker/Core/db/db.js');
+// const dbFunctions = require('/home/ashton/react-projects/ktracker/Core/db/db.js');
 const jsonParser = bodyParser.json();
 
 router.post('/bug', jsonParser, function(req, res) {
-  let report_type = 'BUG';
+  let report_type = 'bug';
   let date_added = new Date();
   let report_name = req.body.report_name;
   let report_desc = req.body.report_desc;

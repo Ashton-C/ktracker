@@ -14,6 +14,11 @@ dB.serialize(() => {
         platform text,
         date_added datetime,
         submitted_by text)`);
+  dB.run(`CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY,
+          username text,
+          password text,
+          admin text)`);
 });
 dbFunctions.terminateDb(dB);
 
@@ -22,7 +27,7 @@ const app = express();
 
 //dotenv
 dotenv.config({
-  silent: true,
+  silent: true
 });
 
 //use routes
