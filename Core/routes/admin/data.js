@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const dbFunctions = require('E:/GitHub/ktracker/Core/db/db.js');
+const dbFunctions = require(process.env.DB_FILEPATH);
 
 router.get('/data/:report_type', function(req, res) {
   function queryF() {

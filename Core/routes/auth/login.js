@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 import bodyParser from 'body-parser';
 
-const dbFunctions = require('E:/GitHub/ktracker/Core/db/db.js');
-// const dbFunctions = require('/home/ashton/react-projects/ktracker/Core/db/db.js');
+const dbFunctions = require(process.env.DB_FILEPATH);
 const jsonParser = bodyParser.json();
 
 let userDataForValidation = [];
@@ -18,36 +17,43 @@ function validateUser(user) {
   return validUsername && validPassword;
 }
 
-function waitForData(userDataForValidation) {
-  setTimeout(() => {
-    console.log(userDataForValidation);
-    return userDataForValidation;
-  }, 10);
-  return userDataForValidation;
+function queryForUser(db, user, callback) {
+  let storedData = dbFunctions.loginUser(db, user.username, user.password);
+  let loginSuccess = callback(user, storedData, sendRes);
+  return loginSuccess;
 }
 
-async function checkMatches(dbData) {
-  console.log(dbData);
-  return false;
+function checkForMatch(user, dataFromDb, callback) {
+  let mes = '';
+  if (dataFromDb.username === user.username) {
+    console.log('User Matches');
+    if (dataFromDb.password === user.password) {
+      mes = 'Password matches! Login should succeed!';
+      console.log(mes);
+      callback(true, mes);
+    } else {
+      mes = 'Password does not match!';
+      console.log(mes);
+      callback(false, mes);
+    }
+  } else {
+    mes = 'User does not match or exist.';
+    console.log(mes);
+    callback(false, mes);
+  }
+}
+
+function sendRes(success, mes) {
+  res.json({ loginSuccess: success, message: mes });
 }
 
 router.post('/login', jsonParser, function(req, res) {
   let user = req.body;
-  let loginSuccess = false;
   if (validateUser(user)) {
     let dB = dbFunctions.initDb();
+    queryForUser(dB, user, checkForMatch());
     dbFunctions.terminateDb(dB);
-    loginSuccess = checkMatches(
-      dbFunctions.loginUser(dB, user.username, user.password)
-    );
-    if (loginSuccess) {
-      res.json({ message: 'welcome back to ktracker!', success: 'true' });
-    } else {
-      res.json({
-        message: 'Invalid username or password. Please try again!',
-        success: 'false'
-      });
-    }
+    loginSuccess = checkMatches();
   }
 });
 

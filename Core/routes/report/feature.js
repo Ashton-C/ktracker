@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 import bodyParser from 'body-parser';
 
-const dbFunctions = require('E:/GitHub/ktracker/Core/db/db.js');
-// const dbFunctions = require('/home/ashton/react-projects/ktracker/Core/db/db.js');
+const dbFunctions = require(process.env.DB_FILEPATH);
 const jsonParser = bodyParser.json();
 
 router.post('/feature', jsonParser, function(req, res) {
@@ -27,7 +26,7 @@ router.post('/feature', jsonParser, function(req, res) {
   );
 
   res.json({
-    response: `Thank you for reporting feature request: ${report_name}!`
+    response: `Thank you for reporting feature request: ${report_name}!`,
   });
 
   dbFunctions.terminateDb(dB);
