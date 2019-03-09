@@ -25,6 +25,7 @@ function queryForUser(db, user, callback) {
 
 function checkForMatch(user, dataFromDb, callback) {
   let mes = '';
+  console.log(dataFromDb);
   if (dataFromDb.username === user.username) {
     console.log('User Matches');
     if (dataFromDb.password === user.password) {

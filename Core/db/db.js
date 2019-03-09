@@ -35,18 +35,35 @@ module.exports = {
     ]);
     console.log('Report Logged!');
   },
-  loginUser: function(db, username, password) {
+  loginUser: function(db, username, password, callback) {
     let checkForUserSQL = `SELECT * FROM users WHERE username = "${username}"`;
-    let loginSuccess = null;
-    let passMatch = null;
-    let userMatch = null;
     let data = [];
     db.all(checkForUserSQL, [], (err, rows) => {
       data.push(rows);
+      console.log(data);
       return data;
     });
-    // console.log(data);
-    return data;
+  },
+
+  checkForMatch: function(user, dataFromDb, callback) {
+    let mes = '';
+    console.log(dataFromDb);
+    if (dataFromDb.username === user.username) {
+      console.log('User Matches');
+      if (dataFromDb.password === user.password) {
+        mes = 'Password matches! Login should succeed!';
+        console.log(mes);
+        callback(true, mes);
+      } else {
+        mes = 'Password does not match!';
+        console.log(mes);
+        callback(false, mes);
+      }
+    } else {
+      mes = 'User does not match or exist.';
+      console.log(mes);
+      callback(false, mes);
+    }
   },
   queryReports: function(db, report_type) {
     let qdata = [];
