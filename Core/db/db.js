@@ -35,36 +35,31 @@ module.exports = {
     ]);
     console.log('Report Logged!');
   },
-  loginUser: function(db, username, password, callback) {
-    let checkForUserSQL = `SELECT * FROM users WHERE username = "${username}"`;
-    let data = [];
-    db.all(checkForUserSQL, [], (err, rows) => {
-      data.push(rows);
-      console.log(data);
-      return data;
-    });
+  loginUser: function(user, _callback) {
+    let checkForUserSQL = `SELECT * FROM users WHERE username = "${
+      user.username
+    }"`;
+    let checkExistsSQL = `SELECT * FROM users WHERE EXISTS (SELECT * FROM users WHERE username = "${
+      user.username
+    }")`;
+    let data = false;
+    let db = this.initDb();
+    if (db.each(checkExistsSQL, []) === undefined) {
+      _callback(undefined);
+    } else {
+      db.get(checkForUserSQL, [], (err, row) => {
+        if (err) {
+          console.log(err);
+          _callback(err);
+        }
+        data = true;
+        //console.log(row);
+        _callback(row);
+      });
+    }
+    this.terminateDb(db);
   },
 
-  checkForMatch: function(user, dataFromDb, callback) {
-    let mes = '';
-    console.log(dataFromDb);
-    if (dataFromDb.username === user.username) {
-      console.log('User Matches');
-      if (dataFromDb.password === user.password) {
-        mes = 'Password matches! Login should succeed!';
-        console.log(mes);
-        callback(true, mes);
-      } else {
-        mes = 'Password does not match!';
-        console.log(mes);
-        callback(false, mes);
-      }
-    } else {
-      mes = 'User does not match or exist.';
-      console.log(mes);
-      callback(false, mes);
-    }
-  },
   queryReports: function(db, report_type) {
     let qdata = [];
     db.serialize(() => {
