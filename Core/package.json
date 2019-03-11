@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "babel ./server/index.js --out-file server-index-compiled.js",
-    "start": "nodemon --exec babel-node ./server/index.js"
+    "start": "nodemon --exec babel-node ./server/index.js",
+    "debug": "nodemon --exec --inspect babel-node ./server/index.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

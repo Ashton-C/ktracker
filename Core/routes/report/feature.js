@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 import bodyParser from 'body-parser';
 
-//const dbFunctions = require('E:/GitHub/ktracker/Core/db/db.js');
-const dbFunctions = require('/home/ashton/react-projects/ktracker/Core/db/db.js');
+const dbFunctions = require(process.env.DB_FILEPATH);
 const jsonParser = bodyParser.json();
 
 router.post('/feature', jsonParser, function(req, res) {
-  let report_type = 'FEATURE REQUEST';
+  let report_type = 'feature';
   let date_added = new Date();
   let report_name = req.body.report_name;
   let report_desc = req.body.report_desc;
