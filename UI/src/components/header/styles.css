@@ -1,5 +1,5 @@
 .Header {
-  display: flex;
+  display: inline-flex;
   flex-direction: row wrap;
   justify-content: space-between;
   width: 99vw;

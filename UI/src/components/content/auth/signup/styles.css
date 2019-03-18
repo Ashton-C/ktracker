@@ -1,0 +1,16 @@
+.Signup h3 {
+  border-bottom: #77dd77 3px solid;
+  width: 10vw;
+  margin: 0px;
+}
+.Signup {
+  display: flex;
+  position: relative;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Signup form {
+  position: relative;
+}
