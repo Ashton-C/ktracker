@@ -1,13 +1,19 @@
-.Signup h3 {
-  border-bottom: #77dd77 3px solid;
-  width: 10vw;
-  margin: 0px;
+.Signup h2 {
+  position: relative;
+  margin: 20px 0px 5px 0px;
 }
+#h2 {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-7.5vw);
+  width: 100px;
+  border-bottom: #77dd77 3px solid;
+}
+
 .Signup {
   display: flex;
   position: relative;
   align-content: center;
-  justify-items: center;
   justify-content: center;
   flex-direction: column;
 }

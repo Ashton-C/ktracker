@@ -24,7 +24,7 @@ function normalizePort(val) {
 }
 
 //get port from env
-const port = normalizePort(process.env.PORT || 3000);
+const port = normalizePort(process.env.PORT || 80);
 app.set('port', port);
 
 //create http server

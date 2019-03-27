@@ -13,7 +13,8 @@ router.get('/data/:report_type', function(req, res) {
   let query = queryF();
   setTimeout(() => {
     console.log(query);
-    res.json(query);
+    //res.json(query);
+    res.sendFile('./index.html')
   }, 10);
 });
 

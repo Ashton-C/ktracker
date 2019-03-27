@@ -3,12 +3,15 @@ import './styles.css';
 
 class Signup extends Component {
   handleSubmit = () => {
-    let data = 1;
+    fetch('')
   };
   render() {
     return (
       <div className="Signup">
-        <h3>Signup</h3>
+        <h2>
+          Signup<span id="h2" />
+        </h2>
+
         <br />
         <form>
           <span>
