@@ -3,6 +3,7 @@ import './styles.css';
 
 class Login extends Component {
   render() {
+    let userLoggedIn = this.props.user;
     return (
       <div className="Login">
         <h3>Login</h3>

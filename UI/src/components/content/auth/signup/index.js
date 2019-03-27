@@ -3,13 +3,15 @@ import './styles.css';
 
 class Signup extends Component {
   handleSubmit = () => {
-    fetch('')
+    fetch('');
   };
   render() {
+    let userLoggedIn = this.props.user;
     return (
       <div className="Signup">
         <h2>
-          Signup<span id="h2" />
+          Signup
+          <span id="h2" />
         </h2>
 
         <br />

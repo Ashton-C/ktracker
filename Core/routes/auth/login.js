@@ -32,26 +32,26 @@ function checkForMatch(user, dataFromDb, callback) {
       if (dataFromDb.password === user.password) {
         mes = 'Password matches! Login should succeed!';
         console.log(mes);
-        callback(true, mes);
+        callback(true, mes, user);
       } else {
         mes = 'Password does not match!';
         console.log(mes);
-        callback(false, mes);
+        callback(false, mes, user);
       }
     } else {
       mes = 'User does not match or exist.';
       console.log(mes);
-      callback(false, mes);
+      callback(false, mes, user);
     }
   } else {
     mes = 'User not found!';
-    callback(false, mes);
+    callback(false, mes, user);
   }
 }
 
 router.post('/login', jsonParser, function(req, res) {
-  function sendRes(success, mes) {
-    res.json({ loginSuccess: success, message: mes });
+  function sendRes(success, mes, user) {
+    res.json({ loginSuccess: success, message: mes, user: user.username });
   }
 
   let user = req.body;
