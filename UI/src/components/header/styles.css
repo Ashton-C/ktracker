@@ -1,0 +1,31 @@
+.Header {
+  display: inline-flex;
+  flex-direction: row wrap;
+  justify-content: space-between;
+  width: 99vw;
+  border-bottom: darkslategray 2px solid;
+  align-items: center;
+}
+
+.HeaderText {
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: left;
+  width: 40vw;
+}
+.HeaderNav {
+  width: 40vw;
+  height: auto;
+}
+
+.HeaderText h2 {
+  color: #77dd77;
+  font-weight: bold;
+  margin-bottom: 1px;
+}
+.HeaderText p {
+  color: lightslategray;
+  margin-top: 1px;
+}
