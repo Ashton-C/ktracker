@@ -34,7 +34,7 @@ class Signup extends Component {
   };
 
   signUp = (username, password) => {
-    let url = 'www.kraktracker.xyz/api/auth/signup';
+    let url = '/api/auth/signup';
     let data = { username: username, password: password };
     console.log(data);
     fetch(url, {

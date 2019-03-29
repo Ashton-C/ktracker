@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import Login from './components/content/auth/login';
 import Signup from './components/content/auth/signup';
 import Report from './components/content/report';
+import Success from './components/success';
 import './App.css';
 
 class App extends Component {
@@ -109,6 +110,11 @@ class App extends Component {
                   user={this.state.userLoggedIn}
                 />
               )}
+            />
+            <Route
+              exact
+              path="/success"
+              render={props => <Success {...props} />}
             />
           </div>
           <Footer />

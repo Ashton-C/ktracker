@@ -14,7 +14,7 @@ class Login extends Component {
     this.handleFormChange = this.handleFormChange.bind(this);
   }
   logIn = (username, password) => {
-    let url = 'www.kraktracker.xyz/api/auth/login';
+    let url = '/api/auth/login';
     let data = { username: username, password: password };
     console.log(data);
     fetch(url, {

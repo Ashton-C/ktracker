@@ -42,14 +42,14 @@ export default class Report extends Component {
         this.state.platform,
         this.state.username
       );
-      this.props.history.push('/');
+      this.props.history.push('/success');
     } catch (e) {
       alert(e.message);
     }
   };
   sendReport = (name, desc, platform, currentUser) => {
     let reportType = this.props.reportType;
-    let url = `www.kraktracker.xyz/api/report/${reportType}`;
+    let url = `/api/report/${reportType}`;
     let data = {
       report_name: name,
       report_desc: desc,
