@@ -14,7 +14,7 @@ router.get('/data/:report_type', function(req, res) {
   setTimeout(() => {
     console.log(query);
     //res.json(query);
-    res.sendFile('./index.html')
+    res.sendFile('./index.html');
   }, 10);
 });
 

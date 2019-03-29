@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../nav';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 class Header extends Component {
@@ -7,7 +8,11 @@ class Header extends Component {
     return (
       <div className="Header">
         <div className="HeaderText">
-          <h2>Kraken Bug/Feature Request Tracker</h2>
+          <h2>
+            <Link className="HeadLink" to="/">
+              Kraken Bug/Feature Request Tracker
+            </Link>
+          </h2>
           <b />
           <p>Made by Ashton Christensen</p>
         </div>
