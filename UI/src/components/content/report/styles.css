@@ -1,0 +1,12 @@
+.Report [type='text'] {
+  width: 50%;
+}
+
+.Reportradios {
+  text-align: center;
+}
+
+.Report textarea {
+  height: 10vw;
+  width: 50%;
+}
