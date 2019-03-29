@@ -20,7 +20,8 @@
   height: auto;
 }
 
-.HeaderText h2 {
+.HeadLink {
+  text-decoration: none;
   color: #77dd77;
   font-weight: bold;
   margin-bottom: 1px;

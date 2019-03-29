@@ -1,0 +1,15 @@
+.Login h2 {
+  position: relative;
+  margin: 20px 0px 5px 0px;
+}
+
+.Login {
+  display: flex;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.Login form {
+  position: relative;
+}

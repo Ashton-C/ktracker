@@ -16,6 +16,13 @@ class App extends Component {
       userLoggedIn: null
     };
   }
+
+  handleLogIn = user => {
+    this.setState({
+      userLoggedIn: user
+    });
+  };
+
   render() {
     return (
       <Router>
@@ -78,7 +85,11 @@ class App extends Component {
             exact
             path="/auth/login"
             render={props => (
-              <Login {...props} user={this.state.userLoggedIn} />
+              <Login
+                {...props}
+                onLogIn={this.handleLogIn}
+                user={this.state.userLoggedIn}
+              />
             )}
           />
           <Route
