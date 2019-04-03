@@ -1,5 +1,4 @@
 import express from 'express';
-import dotenv from 'dotenv';
 
 //import db
 const dbFunctions = require('./db/db.js');
@@ -24,11 +23,6 @@ dbFunctions.terminateDb(dB);
 
 //express app setup
 const app = express();
-
-//dotenv
-dotenv.config({
-  silent: true
-});
 
 //use routes
 require('./routes')(app);
