@@ -1,6 +1,7 @@
 //import dependencies
 import http from 'http';
 import app from '../app';
+const path = require('path');
 
 //logger function
 function log(message) {
@@ -24,7 +25,7 @@ function normalizePort(val) {
 }
 
 //get port from env
-const port = normalizePort(process.env.PORT || 80);
+const port = normalizePort(process.env.PORT || 5000);
 app.set('port', port);
 
 //create http server
@@ -79,5 +80,7 @@ function onListening() {
 //start server
 server.on('error', onError);
 server.on('listening', onListening);
+
+app.use(express.static(path.join(__dirname, 'UI/build')));
 
 startServer(availablePort);
