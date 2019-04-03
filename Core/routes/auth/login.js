@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const dbFunctions = require(process.env.DB_FILEPATH);
 const jsonParser = bodyParser.json();
