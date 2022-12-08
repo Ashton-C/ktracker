@@ -8,11 +8,11 @@
     "debug": "nodemon --exec --inspect babel-node ./server/index.js"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.20.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^6.2.0",
-    "express": "~4.16.0",
+    "express": "~4.18.2",
     "morgan": "~1.9.0",
     "sqlite3": "^4.0.6"
   },
